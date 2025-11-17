@@ -206,10 +206,9 @@ export default function AgreementModal({
   const [hasRead, setHasRead] = useState(false);
   const [hasUnderstood, setHasUnderstood] = useState(false);
   const [hasAgreed, setHasAgreed] = useState(false);
-  const [agreesToTerms, setAgreesToTerms] = useState(false);
 
   const allCheckboxesChecked =
-    hasRead && hasUnderstood && hasAgreed && agreesToTerms;
+    hasRead && hasUnderstood && hasAgreed;
 
   const handleConfirm = () => {
     if (allCheckboxesChecked) {
@@ -219,7 +218,6 @@ export default function AgreementModal({
         setHasRead(false);
         setHasUnderstood(false);
         setHasAgreed(false);
-        setAgreesToTerms(false);
       }, 300);
     }
   };
