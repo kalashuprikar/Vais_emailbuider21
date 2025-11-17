@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -16,6 +17,8 @@ import {
   CreditCard,
   Clock,
   Mail,
+  CheckCircle,
+  ArrowRight,
 } from "lucide-react";
 
 interface CancelSubscriptionModalProps {
