@@ -989,7 +989,10 @@ export default function Payments() {
                 <p className="text-gray-600 mb-6">
                   Add your first payment method to get started
                 </p>
-                <Button className="bg-gradient-to-r from-valasys-orange to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white h-10">
+                <Button
+                  onClick={() => setAddPaymentDialogOpen(true)}
+                  className="bg-gradient-to-r from-valasys-orange to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white h-10"
+                >
                   <Plus className="w-4 h-4 mr-2" />
                   Add Payment Method
                 </Button>
