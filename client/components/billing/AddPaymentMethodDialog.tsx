@@ -509,7 +509,7 @@ export function AddPaymentMethodDialog({
                       setFormData({ ...formData, country: value })
                     }
                   >
-                    <SelectTrigger className="h-11 text-sm border rounded-lg border-gray-200 focus:border-valasys-orange">
+                    <SelectTrigger className="h-11 text-sm border rounded-lg border-gray-200">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
