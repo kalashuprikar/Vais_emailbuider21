@@ -2451,6 +2451,7 @@ export default function ABMLAL() {
                 creditsUsed: 156,
               }}
               onNavigate={(section) => setActiveTab(section)}
+              onFeedback={() => setShowFeedbackModal(true)}
             />
 
             {/* Upload Preview Modal */}
