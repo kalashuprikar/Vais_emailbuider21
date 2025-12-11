@@ -90,7 +90,9 @@ export function VAISFeedbackModal({
 
             {/* Subtext */}
             <p className="text-xs text-gray-500">
-              Please rate your experience on a 5-star scale.
+              Your feedback helps us improve our service.
+              <br />
+              Please share your thoughts and suggestions below.
             </p>
           </div>
 
