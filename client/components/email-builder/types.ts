@@ -11,7 +11,9 @@ export type BlockType =
   | "divider"
   | "product"
   | "navigation"
-  | "spacer";
+  | "spacer"
+  | "centeredImageCard"
+  | "splitImageCard";
 
 export interface TitleBlock {
   type: "title";
