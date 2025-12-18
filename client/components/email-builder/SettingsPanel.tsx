@@ -2392,13 +2392,14 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         return (
           <div className="space-y-5">
             {selectedFooterElement === "social" && (
-              <div>
-                <h4 className="text-sm font-bold text-gray-900 mb-4 pb-3 border-b">
-                  Social Media Settings
-                </h4>
-                <div className="space-y-3">
+              <>
+                <div>
+                  <h4 className="text-xs font-bold text-gray-900 mb-3">
+                    Icon Design
+                  </h4>
+                  <div className="space-y-3">
                   <div>
-                    <Label htmlFor="socialSize" className="text-xs text-gray-700">
+                    <Label htmlFor="socialSize" className="text-xs text-gray-700 mb-1 block">
                       Size
                     </Label>
                     <select
@@ -2413,7 +2414,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                           },
                         })
                       }
-                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm"
+                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange"
                     >
                       <option value="small">Small</option>
                       <option value="medium">Medium</option>
@@ -2423,7 +2424,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   <div>
                     <Label
                       htmlFor="socialShape"
-                      className="text-xs text-gray-700"
+                      className="text-xs text-gray-700 mb-1 block"
                     >
                       Shape
                     </Label>
@@ -2439,7 +2440,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                           },
                         })
                       }
-                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm"
+                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange"
                     >
                       <option value="rounded">Rounded</option>
                       <option value="circle">Circle</option>
@@ -2449,7 +2450,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   <div>
                     <Label
                       htmlFor="socialTheme"
-                      className="text-xs text-gray-700"
+                      className="text-xs text-gray-700 mb-1 block"
                     >
                       Theme
                     </Label>
@@ -2465,39 +2466,51 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                           },
                         })
                       }
-                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm"
+                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange"
                     >
                       <option value="colored">Colored</option>
                       <option value="outlined">Outlined</option>
                       <option value="solid">Solid</option>
                     </select>
                   </div>
-                  <div>
-                    <Label
-                      htmlFor="socialSpacing"
-                      className="text-xs text-gray-700"
-                    >
-                      Space between icons (px)
-                    </Label>
-                    <Input
-                      id="socialSpacing"
-                      type="number"
-                      min="0"
-                      value={block.social.spacing}
-                      onChange={(e) =>
-                        onBlockUpdate({
-                          ...block,
-                          social: {
-                            ...block.social,
-                            spacing: parseInt(e.target.value),
-                          },
-                        })
-                      }
-                      className="focus:ring-valasys-orange focus:ring-2"
-                    />
+                </div>
+                </div>
+
+                <div className="border-t border-gray-200 pt-4">
+                  <h4 className="text-xs font-bold text-gray-900 mb-3">Layout</h4>
+                  <div className="space-y-3">
+                    <div>
+                      <Label
+                        htmlFor="socialSpacing"
+                        className="text-xs text-gray-700 mb-1 block"
+                      >
+                        Space between icons
+                      </Label>
+                      <div className="flex gap-2">
+                        <Input
+                          id="socialSpacing"
+                          type="number"
+                          min="0"
+                          value={block.social.spacing}
+                          onChange={(e) =>
+                            onBlockUpdate({
+                              ...block,
+                              social: {
+                                ...block.social,
+                                spacing: parseInt(e.target.value),
+                              },
+                            })
+                          }
+                          className="flex-1 focus:ring-valasys-orange focus:ring-2"
+                        />
+                        <span className="text-xs text-gray-600 self-center px-2">
+                          px
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </>
             )}
 
             {selectedFooterElement === "enterpriseName" && (
