@@ -62,6 +62,7 @@ export interface ImageBlock {
   width: number;
   height: number;
   widthUnit: "px" | "%";
+  heightUnit: "px" | "%";
   alignment: "left" | "center" | "right";
   link?: string;
   linkType?: "url" | "page" | "email";
