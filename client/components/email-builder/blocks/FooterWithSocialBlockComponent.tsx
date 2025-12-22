@@ -97,7 +97,7 @@ export const FooterWithSocialBlockComponent: React.FC<
                     marginRight: index < block.social.platforms.length - 1 ? `${block.social.spacing}px` : "0",
                   }}
                 >
-                  {getSocialIcon(platform.icon)}
+                  {getSocialIcon(platform.icon, iconColor)}
                 </a>
               );
             })}
