@@ -1333,14 +1333,14 @@ export default function MyDownloadedList() {
 
             {connectedCrms.length === 0 ? (
               <>
-                <div className="rounded-lg border-l-4 border-l-blue-500 bg-blue-50 border border-blue-200 p-4 mb-6">
+                <div className="rounded-xl border-l-4 border-l-blue-600 bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 p-5 mb-6 shadow-sm">
                   <div className="flex gap-3">
                     <Info className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-blue-900 text-sm">
+                      <p className="font-bold text-blue-900 text-sm">
                         No connected CRM account
                       </p>
-                      <p className="text-blue-800 text-sm mt-1">
+                      <p className="text-blue-800 text-sm mt-1.5 leading-relaxed">
                         You can import the CSV manually by following the guided steps below, or connect a CRM for one-click uploads.
                       </p>
                     </div>
@@ -1408,17 +1408,17 @@ export default function MyDownloadedList() {
             ) : (
               <div className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Step 1: Choose CRM */}
-                <Card className="relative overflow-hidden border-l-4 border-l-blue-500">
-                  <div className="absolute top-0 right-0 w-12 h-12 bg-blue-50 rounded-bl-full opacity-50"></div>
-                  <CardHeader className="pb-3 relative z-10">
+                <Card className="relative overflow-hidden border-l-4 border-l-blue-500 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-blue-50 rounded-bl-3xl opacity-40"></div>
+                  <CardHeader className="pb-3 relative z-10 bg-gradient-to-r from-white to-blue-50/50">
                     <div className="flex items-start justify-between">
                       <div>
-                        <div className="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">
+                        <div className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">
                           Step 1
                         </div>
-                        <CardTitle className="text-sm">Select CRM Account</CardTitle>
+                        <CardTitle className="text-base font-bold text-gray-900">Select CRM Account</CardTitle>
                       </div>
-                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-bold">
+                      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white text-xs font-bold shadow-lg">
                         1
                       </span>
                     </div>
@@ -1445,17 +1445,17 @@ export default function MyDownloadedList() {
                 </Card>
 
                 {/* Step 2: Upload File */}
-                <Card className="relative overflow-hidden border-l-4 border-l-orange-500">
-                  <div className="absolute top-0 right-0 w-12 h-12 bg-orange-50 rounded-bl-full opacity-50"></div>
-                  <CardHeader className="pb-3 relative z-10">
+                <Card className="relative overflow-hidden border-l-4 border-l-orange-500 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-orange-50 rounded-bl-3xl opacity-40"></div>
+                  <CardHeader className="pb-3 relative z-10 bg-gradient-to-r from-white to-orange-50/50">
                     <div className="flex items-start justify-between">
                       <div>
-                        <div className="text-xs font-bold text-orange-600 uppercase tracking-wider mb-1">
+                        <div className="text-xs font-bold text-orange-600 uppercase tracking-widest mb-2">
                           Step 2
                         </div>
-                        <CardTitle className="text-sm">Upload Data</CardTitle>
+                        <CardTitle className="text-base font-bold text-gray-900">Upload Data</CardTitle>
                       </div>
-                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-orange-100 text-orange-600 text-xs font-bold">
+                      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 text-white text-xs font-bold shadow-lg">
                         2
                       </span>
                     </div>
@@ -1501,17 +1501,17 @@ export default function MyDownloadedList() {
                 </Card>
 
                 {/* Step 3: Verify in CRM */}
-                <Card className="relative overflow-hidden border-l-4 border-l-green-500">
-                  <div className="absolute top-0 right-0 w-12 h-12 bg-green-50 rounded-bl-full opacity-50"></div>
-                  <CardHeader className="pb-3 relative z-10">
+                <Card className="relative overflow-hidden border-l-4 border-l-green-500 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-green-50 rounded-bl-3xl opacity-40"></div>
+                  <CardHeader className="pb-3 relative z-10 bg-gradient-to-r from-white to-green-50/50">
                     <div className="flex items-start justify-between">
                       <div>
-                        <div className="text-xs font-bold text-green-600 uppercase tracking-wider mb-1">
+                        <div className="text-xs font-bold text-green-600 uppercase tracking-widest mb-2">
                           Step 3
                         </div>
-                        <CardTitle className="text-sm">Verify & Done</CardTitle>
+                        <CardTitle className="text-base font-bold text-gray-900">Verify & Done</CardTitle>
                       </div>
-                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-100 text-green-600 text-xs font-bold">
+                      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-xs font-bold shadow-lg">
                         3
                       </span>
                     </div>
