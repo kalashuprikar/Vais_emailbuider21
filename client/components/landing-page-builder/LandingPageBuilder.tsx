@@ -125,6 +125,28 @@ export const LandingPageBuilder: React.FC<LandingPageBuilderProps> = ({
     });
   };
 
+  const handleSelectTemplate = (templateId: string) => {
+    // Map template IDs to actual blocks
+    const templateBlockMap: Record<string, () => LandingPageBlock> = {
+      "template-1": createHeroBlock,
+      "template-2": createFeaturesBlock,
+      "template-3": createTestimonialsBlock,
+      "template-4": createAboutBlock,
+      "template-5": createContactFormBlock,
+      "template-6": createFeaturesBlock,
+      "template-7": createHeaderBlock,
+      "template-8": createFooterBlock,
+      "template-9": createAboutBlock,
+    };
+
+    const blockCreator = templateBlockMap[templateId];
+    if (blockCreator && page) {
+      const newBlock = blockCreator();
+      handleAddBlock(newBlock);
+      setIsSectionsPanelOpen(false);
+    }
+  };
+
   const handleSave = async () => {
     if (!page) return;
 
