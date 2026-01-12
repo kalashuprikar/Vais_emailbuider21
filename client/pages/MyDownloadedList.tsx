@@ -713,6 +713,18 @@ export default function MyDownloadedList() {
                             >
                               <Download className="h-3 w-3" />
                             </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => {
+                                setMailFile(file);
+                                setSendMailDialogOpen(true);
+                              }}
+                              className="h-8 w-8 p-0 text-green-700 border-green-300 hover:bg-green-50 hover:text-green-800 transition-colors"
+                              title="Send file via email"
+                            >
+                              <Mail className="h-3 w-3" />
+                            </Button>
                             <DropdownMenu>
                               <DropdownMenuTrigger asChild>
                                 <Button
