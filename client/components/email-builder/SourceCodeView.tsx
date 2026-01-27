@@ -107,8 +107,8 @@ export const SourceCodeView: React.FC<SourceCodeViewProps> = ({ template }) => {
 
   return (
     <div className="flex flex-col h-full bg-gray-50">
-      {/* Header with Actions */}
-      <div className="bg-white border-b border-gray-200 p-4 flex items-start justify-between gap-4">
+      {/* Header with Actions - Sticky */}
+      <div className="sticky top-0 z-10 bg-white border-b border-gray-200 p-4 flex items-start justify-between gap-4">
         <div className="flex-1 min-w-0">
           <h2 className="text-lg font-semibold text-gray-800">
             HTML Source Code
