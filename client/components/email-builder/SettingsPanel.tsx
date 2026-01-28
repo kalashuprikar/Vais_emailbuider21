@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Trash2, X, ChevronUp, ChevronDown } from "lucide-react";
+import { Trash2, X } from "lucide-react";
 import { SocialLinksEditor } from "./SocialLinksEditor";
 import { FooterSocialLinksEditor } from "./FooterSocialLinksEditor";
 import { generateId } from "./utils";
@@ -139,25 +139,14 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   >
                     Width
                   </Label>
-                  <div className="flex gap-2 items-center">
-                    <button
-                      onClick={() => {
-                        const newWidth = Math.max(1, (block.width ?? 100) - 1);
-                        onBlockUpdate({
-                          ...block,
-                          width: newWidth,
-                        });
-                      }}
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Decrease width"
-                    >
-                      <ChevronDown size={16} />
-                    </button>
+                  <div className="flex gap-2">
                     <Input
                       id="titleWidth"
                       type="text"
                       inputMode="numeric"
-                      value={String(block.width ?? 100)}
+                      value={
+                        isNaN(block.width as any) ? 100 : (block.width ?? 100)
+                      }
                       onChange={(e) => {
                         const inputValue = e.target.value;
                         // Only allow digits
@@ -176,19 +165,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       }}
                       className="flex-1 focus:ring-valasys-orange focus:ring-2"
                     />
-                    <button
-                      onClick={() => {
-                        const newWidth = (block.width ?? 100) + 1;
-                        onBlockUpdate({
-                          ...block,
-                          width: newWidth,
-                        });
-                      }}
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Increase width"
-                    >
-                      <ChevronUp size={16} />
-                    </button>
                     <select
                       value={block.widthUnit}
                       onChange={(e) =>
@@ -769,23 +745,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   <Label className="text-xs text-gray-700 mb-1 block">
                     Width
                   </Label>
-                  <div className="flex gap-2 items-center">
-                    <button
-                      onClick={() => {
-                        const newWidth = Math.max(1, (block.width ?? 100) - 1);
-                        onBlockUpdate({
-                          ...block,
-                          width: newWidth,
-                        });
-                      }}
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Decrease width"
-                    >
-                      <ChevronDown size={16} />
-                    </button>
+                  <div className="flex gap-2">
                     <Input
                       type="number"
-                      min="1"
+                      min="0"
                       value={block.width ?? 100}
                       onChange={(e) => {
                         const val = e.target.value;
@@ -793,26 +756,13 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                           onBlockUpdate({ ...block, width: 100 });
                         } else {
                           const num = parseInt(val);
-                          if (!isNaN(num) && num > 0) {
+                          if (!isNaN(num)) {
                             onBlockUpdate({ ...block, width: num });
                           }
                         }
                       }}
                       className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange focus:border-transparent"
                     />
-                    <button
-                      onClick={() => {
-                        const newWidth = (block.width ?? 100) + 1;
-                        onBlockUpdate({
-                          ...block,
-                          width: newWidth,
-                        });
-                      }}
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Increase width"
-                    >
-                      <ChevronUp size={16} />
-                    </button>
                     <select
                       value={block.widthUnit ?? "%"}
                       onChange={(e) =>
@@ -1552,23 +1502,10 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   <Label className="text-xs text-gray-700 mb-1 block">
                     Width
                   </Label>
-                  <div className="flex gap-2 items-center">
-                    <button
-                      onClick={() => {
-                        const newWidth = Math.max(1, (block.width ?? 100) - 1);
-                        onBlockUpdate({
-                          ...block,
-                          width: newWidth,
-                        });
-                      }}
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Decrease width"
-                    >
-                      <ChevronDown size={16} />
-                    </button>
+                  <div className="flex gap-2">
                     <Input
                       type="number"
-                      min="1"
+                      min="0"
                       value={block.width ?? 100}
                       onChange={(e) => {
                         const val = e.target.value;
@@ -1576,26 +1513,13 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                           onBlockUpdate({ ...block, width: 100 });
                         } else {
                           const num = parseInt(val);
-                          if (!isNaN(num) && num > 0) {
+                          if (!isNaN(num)) {
                             onBlockUpdate({ ...block, width: num });
                           }
                         }
                       }}
                       className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange focus:border-transparent"
                     />
-                    <button
-                      onClick={() => {
-                        const newWidth = (block.width ?? 100) + 1;
-                        onBlockUpdate({
-                          ...block,
-                          width: newWidth,
-                        });
-                      }}
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Increase width"
-                    >
-                      <ChevronUp size={16} />
-                    </button>
                     <select
                       value={block.widthUnit ?? "%"}
                       onChange={(e) =>
@@ -2170,24 +2094,11 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   >
                     Width
                   </Label>
-                  <div className="flex gap-2 items-center">
-                    <button
-                      onClick={() => {
-                        const newWidth = Math.max(1, (block.width ?? 100) - 1);
-                        onBlockUpdate({
-                          ...block,
-                          width: newWidth,
-                        });
-                      }}
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Decrease width"
-                    >
-                      <ChevronDown size={16} />
-                    </button>
+                  <div className="flex gap-2">
                     <Input
                       id="btnWidth"
                       type="number"
-                      min="1"
+                      min="0"
                       value={block.width ?? 100}
                       onChange={(e) => {
                         const val = e.target.value;
@@ -2195,26 +2106,13 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                           onBlockUpdate({ ...block, width: 100 });
                         } else {
                           const num = parseInt(val);
-                          if (!isNaN(num) && num > 0) {
+                          if (!isNaN(num)) {
                             onBlockUpdate({ ...block, width: num });
                           }
                         }
                       }}
                       className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange focus:border-transparent"
                     />
-                    <button
-                      onClick={() => {
-                        const newWidth = (block.width ?? 100) + 1;
-                        onBlockUpdate({
-                          ...block,
-                          width: newWidth,
-                        });
-                      }}
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Increase width"
-                    >
-                      <ChevronUp size={16} />
-                    </button>
                     <select
                       value={block.widthUnit ?? "%"}
                       onChange={(e) =>
@@ -3840,24 +3738,11 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   <Label className="text-xs text-gray-700 mb-1 block">
                     Width
                   </Label>
-                  <div className="flex gap-2 items-center">
-                    <button
-                      onClick={() => {
-                        const newWidth = Math.max(1, (block.width ?? 300) - 1);
-                        onBlockUpdate({
-                          ...block,
-                          width: newWidth,
-                        });
-                      }}
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Decrease width"
-                    >
-                      <ChevronDown size={16} />
-                    </button>
+                  <div className="flex gap-2">
                     <Input
                       type="text"
                       inputMode="numeric"
-                      value={String(block.width ?? 300)}
+                      value={block.width ?? 300}
                       onChange={(e) => {
                         const inputValue = e.target.value;
                         const numericValue = inputValue.replace(/[^\d]/g, "");
@@ -3875,19 +3760,6 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       }}
                       className="flex-1 focus:ring-valasys-orange focus:ring-2"
                     />
-                    <button
-                      onClick={() => {
-                        const newWidth = (block.width ?? 300) + 1;
-                        onBlockUpdate({
-                          ...block,
-                          width: newWidth,
-                        });
-                      }}
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Increase width"
-                    >
-                      <ChevronUp size={16} />
-                    </button>
                     <select
                       value={block.widthUnit ?? "px"}
                       onChange={(e) =>
@@ -4377,49 +4249,14 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
             </div>
             <div>
               <Label htmlFor="logoWidth">Width (px)</Label>
-              <div className="flex gap-2 items-center">
-                <button
-                  onClick={() => {
-                    const newWidth = Math.max(1, (block.width ?? 100) - 1);
-                    onBlockUpdate({
-                      ...block,
-                      width: newWidth,
-                    });
-                  }}
-                  className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                  title="Decrease width"
-                >
-                  <ChevronDown size={16} />
-                </button>
-                <Input
-                  id="logoWidth"
-                  type="number"
-                  min="1"
-                  value={block.width}
-                  onChange={(e) => {
-                    const val = e.target.value;
-                    if (val !== "") {
-                      const num = parseInt(val);
-                      if (!isNaN(num) && num > 0) {
-                        onBlockUpdate({ ...block, width: num });
-                      }
-                    }
-                  }}
-                />
-                <button
-                  onClick={() => {
-                    const newWidth = (block.width ?? 100) + 1;
-                    onBlockUpdate({
-                      ...block,
-                      width: newWidth,
-                    });
-                  }}
-                  className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                  title="Increase width"
-                >
-                  <ChevronUp size={16} />
-                </button>
-              </div>
+              <Input
+                id="logoWidth"
+                type="number"
+                value={block.width}
+                onChange={(e) =>
+                  onBlockUpdate({ ...block, width: parseInt(e.target.value) })
+                }
+              />
             </div>
             <div>
               <Label htmlFor="logoHeight">Height (px)</Label>
@@ -4570,51 +4407,25 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   >
                     Width
                   </Label>
-                  <div className="flex gap-2 items-center">
-                    <button
-                      onClick={() => {
-                        const newWidth = Math.max(1, (block.width ?? 100) - 1);
-                        onBlockUpdate({
-                          ...block,
-                          width: newWidth,
-                        });
-                      }}
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Decrease width"
-                    >
-                      <ChevronDown size={16} />
-                    </button>
+                  <div className="flex gap-2">
                     <Input
                       id="socialWidth"
                       type="number"
-                      min="1"
+                      min="0"
                       value={block.width ?? 100}
                       onChange={(e) => {
                         const val = e.target.value;
                         if (val === "") {
-                          onBlockUpdate({ ...block, width: 100 });
+                          onBlockUpdate({ ...block, width: 0 });
                         } else {
                           const num = parseInt(val);
-                          if (!isNaN(num) && num > 0) {
+                          if (!isNaN(num)) {
                             onBlockUpdate({ ...block, width: num });
                           }
                         }
                       }}
                       className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange focus:border-transparent"
                     />
-                    <button
-                      onClick={() => {
-                        const newWidth = (block.width ?? 100) + 1;
-                        onBlockUpdate({
-                          ...block,
-                          width: newWidth,
-                        });
-                      }}
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Increase width"
-                    >
-                      <ChevronUp size={16} />
-                    </button>
                     <select
                       value={block.widthUnit ?? "%"}
                       onChange={(e) =>
@@ -4743,19 +4554,20 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   >
                     Width
                   </Label>
-                  <div className="flex gap-2 items-center">
-                    <button
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
                       onClick={() =>
                         onBlockUpdate({
                           ...block,
-                          width: Math.max(1, (block.width ?? 100) - 1),
+                          width: Math.max(10, (block.width ?? 100) - 10),
                         })
                       }
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Decrease width"
+                      className="px-2"
                     >
-                      <ChevronDown size={16} />
-                    </button>
+                      −
+                    </Button>
                     <Input
                       id="htmlWidth"
                       type="number"
@@ -4772,18 +4584,19 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       placeholder="Enter width"
                       className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange focus:border-transparent"
                     />
-                    <button
+                    <Button
+                      variant="outline"
+                      size="sm"
                       onClick={() =>
                         onBlockUpdate({
                           ...block,
-                          width: (block.width ?? 100) + 1,
+                          width: (block.width ?? 100) + 10,
                         })
                       }
-                      className="p-1 border border-gray-300 rounded hover:bg-gray-100 transition-colors"
-                      title="Increase width"
+                      className="px-2"
                     >
-                      <ChevronUp size={16} />
-                    </button>
+                      +
+                    </Button>
                     <select
                       value={block.widthUnit ?? "%"}
                       onChange={(e) =>
