@@ -150,8 +150,8 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       onChange={(e) => {
                         const inputValue = e.target.value;
                         // Only allow digits
-                        const numericValue = inputValue.replace(/[^\d]/g, '');
-                        if (numericValue === '') {
+                        const numericValue = inputValue.replace(/[^\d]/g, "");
+                        if (numericValue === "") {
                           onBlockUpdate({
                             ...block,
                             width: 100,
@@ -752,8 +752,8 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       value={block.width ?? 100}
                       onChange={(e) => {
                         const inputValue = e.target.value;
-                        const numericValue = inputValue.replace(/[^\d]/g, '');
-                        if (numericValue === '') {
+                        const numericValue = inputValue.replace(/[^\d]/g, "");
+                        if (numericValue === "") {
                           onBlockUpdate({
                             ...block,
                             width: 100,
@@ -1545,8 +1545,8 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       value={block.height ?? 200}
                       onChange={(e) => {
                         const inputValue = e.target.value;
-                        const numericValue = inputValue.replace(/[^\d]/g, '');
-                        if (numericValue === '') {
+                        const numericValue = inputValue.replace(/[^\d]/g, "");
+                        if (numericValue === "") {
                           onBlockUpdate({
                             ...block,
                             height: 200,
@@ -3738,8 +3738,8 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       value={block.width ?? 300}
                       onChange={(e) => {
                         const inputValue = e.target.value;
-                        const numericValue = inputValue.replace(/[^\d]/g, '');
-                        if (numericValue === '') {
+                        const numericValue = inputValue.replace(/[^\d]/g, "");
+                        if (numericValue === "") {
                           onBlockUpdate({
                             ...block,
                             width: 300,
@@ -3780,8 +3780,8 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       value={block.height ?? 200}
                       onChange={(e) => {
                         const inputValue = e.target.value;
-                        const numericValue = inputValue.replace(/[^\d]/g, '');
-                        if (numericValue === '') {
+                        const numericValue = inputValue.replace(/[^\d]/g, "");
+                        if (numericValue === "") {
                           onBlockUpdate({
                             ...block,
                             height: 200,
