@@ -89,7 +89,7 @@ export const EmailCanvas: React.FC<EmailCanvasProps> = ({
                   type="color"
                   value={template.backgroundColor}
                   onChange={(e) => onBackgroundColorChange(e.target.value)}
-                  className="text-sm w-10 h-10 border border-gray-300 rounded cursor-pointer flex-shrink-0"
+                  className="text-sm w-10 h-10 border border-gray-300 rounded cursor-pointer flex-shrink-0 mr-2"
                 />
                 <input
                   type="text"
