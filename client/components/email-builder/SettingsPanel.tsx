@@ -55,6 +55,16 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     String(block?.type === "video" ? (block.height ?? 200) : 200)
   );
 
+  // Update input states when block changes
+  React.useEffect(() => {
+    if (block?.type === "title") {
+      setTitleWidthInput(String(block.width ?? 100));
+    } else if (block?.type === "video") {
+      setVideoWidthInput(String(block.width ?? 300));
+      setVideoHeightInput(String(block.height ?? 200));
+    }
+  }, [block?.id, block?.type, block?.width, block?.height]);
+
   // Initialize selectedCardId when block changes to twoColumnCard
   React.useEffect(() => {
     if (block?.type === "twoColumnCard") {
