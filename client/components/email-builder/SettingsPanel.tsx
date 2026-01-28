@@ -3708,7 +3708,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                     <Input
                       type="number"
                       min="0"
-                      max="100"
+                      max={(block.widthUnit ?? "px") === "%" ? 100 : 2000}
                       value={block.width ?? 300}
                       onChange={(e) =>
                         onBlockUpdate({
