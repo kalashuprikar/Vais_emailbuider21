@@ -1217,7 +1217,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             style={{
               left: manageUsersTooltipPos.left,
               top: manageUsersTooltipPos.top,
-              transform: "translateY(-50%)",
+              transform: "translateX(-50%)",
             }}
             className="fixed z-50 tooltip-animate tooltip-with-arrow"
             role="tooltip"
