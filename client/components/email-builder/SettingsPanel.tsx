@@ -4408,38 +4408,24 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                     Width
                   </Label>
                   <div className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => onBlockUpdate({ ...block, width: Math.max(10, (block.width ?? 100) - 10) })}
-                      className="px-2"
-                    >
-                      −
-                    </Button>
                     <Input
                       id="socialWidth"
                       type="number"
-                      min="1"
+                      min="0"
                       value={block.width ?? 100}
                       onChange={(e) => {
-                        const val = e.target.value.trim();
-                        if (val === "") return;
-                        const num = parseInt(val, 10);
-                        if (!isNaN(num) && num > 0) {
-                          onBlockUpdate({ ...block, width: num });
+                        const val = e.target.value;
+                        if (val === "") {
+                          onBlockUpdate({ ...block, width: 0 });
+                        } else {
+                          const num = parseInt(val);
+                          if (!isNaN(num)) {
+                            onBlockUpdate({ ...block, width: num });
+                          }
                         }
                       }}
-                      placeholder="Enter width"
                       className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-valasys-orange focus:border-transparent"
                     />
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => onBlockUpdate({ ...block, width: (block.width ?? 100) + 10 })}
-                      className="px-2"
-                    >
-                      +
-                    </Button>
                     <select
                       value={block.widthUnit ?? "%"}
                       onChange={(e) =>
