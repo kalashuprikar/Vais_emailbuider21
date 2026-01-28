@@ -1209,7 +1209,9 @@ export function saveTemplateToLocalStorage(template: EmailTemplate): void {
     localStorage.setItem("email_templates", JSON.stringify(templates));
   } catch (error) {
     if ((error as any).name === "QuotaExceededError") {
-      console.error("❌ Storage quota exceeded! Images may be too large. Try removing some images or using smaller file sizes.");
+      console.error(
+        "❌ Storage quota exceeded! Images may be too large. Try removing some images or using smaller file sizes.",
+      );
     } else {
       console.error("❌ Failed to save template:", error);
     }

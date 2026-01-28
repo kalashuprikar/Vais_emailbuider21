@@ -1442,13 +1442,19 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                     alt="Preview"
                     className="max-w-full max-h-full"
                     onError={(e) => {
-                      console.error("❌ Image failed to load. This may be due to CORS restrictions or an invalid URL.", (block as any).src);
+                      console.error(
+                        "❌ Image failed to load. This may be due to CORS restrictions or an invalid URL.",
+                        (block as any).src,
+                      );
                       (e.target as HTMLImageElement).style.display = "none";
-                      const parent = (e.target as HTMLImageElement).parentElement;
+                      const parent = (e.target as HTMLImageElement)
+                        .parentElement;
                       if (parent) {
                         const errorDiv = document.createElement("div");
-                        errorDiv.className = "text-gray-400 text-xs text-center";
-                        errorDiv.textContent = "Image failed to load (CORS or invalid URL)";
+                        errorDiv.className =
+                          "text-gray-400 text-xs text-center";
+                        errorDiv.textContent =
+                          "Image failed to load (CORS or invalid URL)";
                         parent.appendChild(errorDiv);
                       }
                     }}
@@ -2662,8 +2668,11 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                     alt="Logo"
                     className="max-h-12 max-w-12"
                     onError={(e) => {
-                      console.error("❌ Logo image failed to load. Check the URL or try uploading again.");
-                      (e.target as HTMLImageElement).style.border = "2px solid red";
+                      console.error(
+                        "❌ Logo image failed to load. Check the URL or try uploading again.",
+                      );
+                      (e.target as HTMLImageElement).style.border =
+                        "2px solid red";
                     }}
                   />
                   <Button
@@ -2677,7 +2686,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
               )}
               <div className="space-y-2">
                 <div>
-                  <label className="text-xs text-gray-600 mb-1 block">Upload Image</label>
+                  <label className="text-xs text-gray-600 mb-1 block">
+                    Upload Image
+                  </label>
                   <input
                     type="file"
                     accept="image/*"
@@ -2685,7 +2696,11 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                       const file = e.target.files?.[0];
                       if (file) {
                         if (file.size > 1024 * 1024) {
-                          console.warn("⚠️ Large image detected! File size: " + (file.size / 1024 / 1024).toFixed(2) + "MB. Consider using a smaller image.");
+                          console.warn(
+                            "⚠️ Large image detected! File size: " +
+                              (file.size / 1024 / 1024).toFixed(2) +
+                              "MB. Consider using a smaller image.",
+                          );
                         }
                         const reader = new FileReader();
                         reader.onload = (event) => {
@@ -2708,7 +2723,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-gray-600 mb-1 block">Or paste Image URL</label>
+                  <label className="text-xs text-gray-600 mb-1 block">
+                    Or paste Image URL
+                  </label>
                   <Input
                     type="text"
                     placeholder="https://example.com/logo.png"

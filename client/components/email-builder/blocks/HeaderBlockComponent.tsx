@@ -18,7 +18,11 @@ export const HeaderBlockComponent: React.FC<HeaderBlockComponentProps> = ({
     if (file) {
       // Check file size (warn if > 1MB)
       if (file.size > 1024 * 1024) {
-        console.warn("⚠️ Large image detected! File size: " + (file.size / 1024 / 1024).toFixed(2) + "MB. Consider using a smaller image to avoid storage issues.");
+        console.warn(
+          "⚠️ Large image detected! File size: " +
+            (file.size / 1024 / 1024).toFixed(2) +
+            "MB. Consider using a smaller image to avoid storage issues.",
+        );
       }
       const reader = new FileReader();
       reader.onload = (event) => {
