@@ -89,9 +89,7 @@ export const CenteredImageCardBlockComponent: React.FC<
           size="sm"
           className="h-7 w-7 p-0 hover:bg-gray-100"
           title="Add"
-          onClick={() => {
-            // Placeholder for add functionality
-          }}
+          onClick={handleAdd}
         >
           <Plus className="w-3 h-3 text-gray-700" />
         </Button>
