@@ -59,46 +59,23 @@ export const CenteredImageCardBlockComponent: React.FC<
       else if (sectionType === "image") contentToCopy = block.image;
 
       if (!contentToCopy) {
-        toast.error("Nothing to copy");
         return;
       }
 
-      // Try modern clipboard API first
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard
-          .writeText(contentToCopy)
-          .then(() => {
-            toast.success("Copied to clipboard!");
-          })
-          .catch(() => {
-            // Fallback to older method if modern API fails
-            copyUsingFallback(contentToCopy);
-          });
-      } else {
-        // Use fallback for older browsers
-        copyUsingFallback(contentToCopy);
-      }
-    };
-
-    const copyUsingFallback = (text: string) => {
       try {
+        // Use fallback method that's more compatible
         const textArea = document.createElement("textarea");
-        textArea.value = text;
+        textArea.value = contentToCopy;
         textArea.style.position = "fixed";
         textArea.style.left = "-9999px";
         textArea.style.top = "-9999px";
         document.body.appendChild(textArea);
         textArea.select();
-        const successful = document.execCommand("copy");
+        document.execCommand("copy");
         document.body.removeChild(textArea);
-
-        if (successful) {
-          toast.success("Copied to clipboard!");
-        } else {
-          toast.error("Failed to copy");
-        }
       } catch (err) {
-        toast.error("Failed to copy");
+        // Silently fail if copy doesn't work
+        console.error("Copy failed:", err);
       }
     };
 
