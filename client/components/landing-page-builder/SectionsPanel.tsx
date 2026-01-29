@@ -317,8 +317,8 @@ const sectionTemplates: SectionTemplate[] = [
     id: "template-footer",
     name: "Footer",
     description: "Footer with links and branding",
-    preview: (
-      <div className="bg-white border border-gray-200 rounded-xl p-6 h-40 flex flex-col justify-center gap-3">
+    preview: (isSelected) => (
+      <div className={`bg-white ${isSelected ? 'border border-gray-900' : 'border border-gray-200 hover:border-dashed hover:border-gray-400'} rounded-xl p-6 h-40 flex flex-col justify-center gap-3 transition-all`}>
         <div className="flex justify-between gap-4">
           <div className="text-xs">
             <div className="font-semibold text-gray-900 mb-1">Product</div>
