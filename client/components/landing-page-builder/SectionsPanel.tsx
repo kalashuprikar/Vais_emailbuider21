@@ -97,8 +97,8 @@ const sectionTemplates: SectionTemplate[] = [
     id: "template-4",
     name: "Infinite canvas",
     description: "Content layout",
-    preview: (
-      <div className="bg-white border border-gray-200 rounded-xl p-6 h-40 flex">
+    preview: (isSelected) => (
+      <div className={`bg-white ${isSelected ? 'border border-gray-900' : 'border border-gray-200 hover:border-dashed hover:border-gray-400'} rounded-xl p-6 h-40 flex transition-all`}>
         <div className="flex-1 flex flex-col justify-center gap-2">
           <div className="text-xs font-semibold text-gray-900">
             Infinite canvas.
