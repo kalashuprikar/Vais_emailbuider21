@@ -159,8 +159,8 @@ export const SplitImageCardBlockComponent: React.FC<
           size="sm"
           className="h-7 w-7 p-0 hover:bg-gray-100"
           title="Copy"
-          onClick={(e) => {
-            e.stopPropagation();
+          onMouseDown={(e) => {
+            e.preventDefault();
             handleCopy();
           }}
         >
