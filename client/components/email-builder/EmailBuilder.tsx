@@ -332,10 +332,12 @@ export const EmailBuilder: React.FC<EmailBuilderProps> = ({
                   template={template}
                   templateSubject={templateSubject}
                   selectedBlockId={selectedBlockId}
+                  editingBlockId={editingBlockId}
                   selectedFooterElement={selectedFooterElement}
                   onAddBlock={handleAddBlock}
                   onBlockUpdate={handleUpdateBlock}
                   onBlockSelect={setSelectedBlockId}
+                  onEditingBlockChange={setEditingBlockId}
                   onFooterElementSelect={setSelectedFooterElement}
                   onTemplateSubjectChange={setTemplateSubject}
                   onBackgroundColorChange={(color) =>
