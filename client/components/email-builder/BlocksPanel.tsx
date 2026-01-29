@@ -130,7 +130,7 @@ const DraggableTemplateCard: React.FC<DraggableTemplateProps> = ({
   isSelected,
   onSelect,
 }) => {
-  const [{ isDragging }, drag]: any = useDrag(
+  const [{ isDragging }, drag] = useDrag(
     () => ({
       type: "template",
       item: () => {
