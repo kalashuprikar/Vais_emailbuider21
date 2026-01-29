@@ -73,8 +73,8 @@ const sectionTemplates: SectionTemplate[] = [
     id: "template-3",
     name: "Logo",
     description: "Three logos",
-    preview: (
-      <div className="bg-white border border-gray-200 rounded-xl p-6 h-40 flex items-center justify-center gap-4">
+    preview: (isSelected) => (
+      <div className={`bg-white ${isSelected ? 'border border-gray-900' : 'border border-gray-200 hover:border-dashed hover:border-gray-400'} rounded-xl p-6 h-40 flex items-center justify-center gap-4 transition-all`}>
         <div className="flex items-center justify-center gap-4 w-full">
           <div className="flex items-center gap-1 text-gray-400">
             <div className="w-1 h-1 rounded-full bg-gray-400"></div>
