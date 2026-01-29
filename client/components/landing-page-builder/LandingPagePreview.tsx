@@ -24,6 +24,7 @@ interface LandingPagePreviewProps {
   onUpdateBlock: (blockId: string, properties: Record<string, any>) => void;
   onDeleteBlock: (blockId: string) => void;
   onMoveBlock: (blockId: string, direction: "up" | "down") => void;
+  onDuplicateBlock?: (blockId: string) => void;
 }
 
 export const LandingPagePreview: React.FC<LandingPagePreviewProps> = ({
