@@ -26,6 +26,8 @@ export const BlockToolbar: React.FC<BlockToolbarProps> = ({
       <Button
         variant="ghost"
         size="sm"
+        onMouseDown={(e) => e.stopPropagation()}
+        onPointerDown={(e) => e.stopPropagation()}
         onClick={onAddBlock}
         title="Add new block below"
         className="h-8 w-8 p-0 hover:bg-gray-100"
@@ -38,6 +40,8 @@ export const BlockToolbar: React.FC<BlockToolbarProps> = ({
       <Button
         variant="ghost"
         size="sm"
+        onMouseDown={(e) => e.stopPropagation()}
+        onPointerDown={(e) => e.stopPropagation()}
         onClick={onMoveUp}
         disabled={blockIndex === 0}
         title="Move block up"
@@ -49,6 +53,8 @@ export const BlockToolbar: React.FC<BlockToolbarProps> = ({
       <Button
         variant="ghost"
         size="sm"
+        onMouseDown={(e) => e.stopPropagation()}
+        onPointerDown={(e) => e.stopPropagation()}
         onClick={onMoveDown}
         disabled={blockIndex === totalBlocks - 1}
         title="Move block down"
@@ -62,6 +68,8 @@ export const BlockToolbar: React.FC<BlockToolbarProps> = ({
       <Button
         variant="ghost"
         size="sm"
+        onMouseDown={(e) => e.stopPropagation()}
+        onPointerDown={(e) => e.stopPropagation()}
         onClick={onDuplicate}
         title="Duplicate block"
         className="h-8 w-8 p-0 hover:bg-gray-100"
@@ -72,6 +80,8 @@ export const BlockToolbar: React.FC<BlockToolbarProps> = ({
       <Button
         variant="ghost"
         size="sm"
+        onMouseDown={(e) => e.stopPropagation()}
+        onPointerDown={(e) => e.stopPropagation()}
         onClick={onDelete}
         title="Delete block"
         className="h-8 w-8 p-0 hover:bg-red-100"
