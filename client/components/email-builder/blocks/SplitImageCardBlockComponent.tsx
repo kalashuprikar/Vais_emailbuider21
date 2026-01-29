@@ -67,45 +67,44 @@ export const SplitImageCardBlockComponent: React.FC<
     sectionType: "image" | "title" | "description" | "buttonText" | "buttonLink";
   }) => {
     const handleCopy = () => {
-      try {
-        if (sectionType === "title") {
-          const newTitle = block.title + "\n" + block.title;
-          onBlockUpdate({ ...block, title: newTitle });
-          alert("Title duplicated!");
-        } else if (sectionType === "description") {
-          const newDescription = block.description + "\n" + block.description;
-          onBlockUpdate({ ...block, description: newDescription });
-          alert("Description duplicated!");
-        } else if (sectionType === "buttonText") {
-          const newButtonText = block.buttonText + " " + block.buttonText;
-          onBlockUpdate({ ...block, buttonText: newButtonText });
-          alert("Button text duplicated!");
-        } else if (sectionType === "buttonLink") {
+      console.log("Copy button clicked for:", sectionType);
+
+      if (sectionType === "title" && block.title) {
+        const newTitle = block.title + "\n" + block.title;
+        onBlockUpdate({ ...block, title: newTitle });
+        console.log("Title duplicated");
+      } else if (sectionType === "description" && block.description) {
+        const newDescription = block.description + "\n" + block.description;
+        onBlockUpdate({ ...block, description: newDescription });
+        console.log("Description duplicated");
+      } else if (sectionType === "buttonText" && block.buttonText) {
+        const newButtonText = block.buttonText + " " + block.buttonText;
+        onBlockUpdate({ ...block, buttonText: newButtonText });
+        console.log("Button text duplicated");
+      } else if (sectionType === "buttonLink" && block.buttonLink) {
+        try {
           const textArea = document.createElement("textarea");
           textArea.value = block.buttonLink;
-          textArea.style.position = "fixed";
-          textArea.style.left = "-9999px";
-          textArea.style.top = "-9999px";
           document.body.appendChild(textArea);
           textArea.select();
           document.execCommand("copy");
           document.body.removeChild(textArea);
-          alert("Link copied to clipboard!");
-        } else if (sectionType === "image") {
+          console.log("Link copied");
+        } catch (err) {
+          console.error("Copy failed:", err);
+        }
+      } else if (sectionType === "image" && block.image) {
+        try {
           const textArea = document.createElement("textarea");
           textArea.value = block.image;
-          textArea.style.position = "fixed";
-          textArea.style.left = "-9999px";
-          textArea.style.top = "-9999px";
           document.body.appendChild(textArea);
           textArea.select();
           document.execCommand("copy");
           document.body.removeChild(textArea);
-          alert("Image URL copied to clipboard!");
+          console.log("Image URL copied");
+        } catch (err) {
+          console.error("Copy failed:", err);
         }
-      } catch (err) {
-        console.error("Copy failed:", err);
-        alert("Copy failed, please try again");
       }
     };
 
