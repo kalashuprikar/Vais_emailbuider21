@@ -268,8 +268,9 @@ export const CenteredImageCardBlockComponent: React.FC<
               <div
                 style={{
                   position: "relative",
-                  display: "inline-block",
+                  display: "block",
                   width: "100%",
+                  overflow: "hidden",
                 }}
               >
                 <img
