@@ -127,17 +127,25 @@ export const ImageBlockComponent: React.FC<ImageBlockComponentProps> = ({
           {isSelected && (
             <div
               onMouseDown={handleResizeStart}
-              className={`absolute top-0 right-0 w-1.5 h-full cursor-col-resize transition-colors ${
-                isResizing
-                  ? "bg-valasys-orange"
-                  : "bg-valasys-orange/0 hover:bg-valasys-orange"
-              }`}
+              className="absolute top-0 right-0 h-full cursor-col-resize transition-colors"
               style={{
                 position: "absolute",
                 right: 0,
                 top: 0,
                 height: "100%",
                 width: "6px",
+                backgroundColor: isResizing ? "#FF6B35" : "transparent",
+                opacity: isResizing ? 1 : 0.3,
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLDivElement).style.opacity = "1";
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = "#FF6B35";
+              }}
+              onMouseLeave={(e) => {
+                if (!isResizing) {
+                  (e.currentTarget as HTMLDivElement).style.opacity = "0.3";
+                  (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
+                }
               }}
               title="Drag to resize image width"
             />
