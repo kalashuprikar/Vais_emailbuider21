@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { CenteredImageCardBlock } from "../types";
-import { Upload, Edit2 } from "lucide-react";
+import { ContentBlock } from "../types";
+import { Upload, Edit2, Plus, Copy, Trash2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 interface CenteredImageCardBlockComponentProps {
   block: CenteredImageCardBlock;
   isSelected: boolean;
   onBlockUpdate: (block: CenteredImageCardBlock) => void;
+  onAddBlock?: (block: ContentBlock, position: number) => void;
+  onDuplicate?: (block: ContentBlock, position: number) => void;
+  onDelete?: (blockId: string) => void;
+  blockIndex?: number;
 }
 
 export const CenteredImageCardBlockComponent: React.FC<
