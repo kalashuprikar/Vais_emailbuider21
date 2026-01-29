@@ -435,7 +435,7 @@ export function createSplitImageCardBlock(
     image:
       "https://cdn.builder.io/o/assets%2Fa4ae9b84255d41ee86b79eb7d0d252c1%2Feea03b1548cc47089bc55e5e6444e1ec?alt=media&token=34f7628a-143a-42b0-aff9-8e380b3e52aa&apiKey=a4ae9b84255d41ee86b79eb7d0d252c1",
     imageAlt: "Card image",
-    label: "New",
+    label: "",
     title: "Some title here",
     description:
       "From 25€\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
