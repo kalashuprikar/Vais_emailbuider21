@@ -99,7 +99,6 @@ export const SplitImageCardBlockComponent: React.FC<
         onBlockUpdate({ ...block, buttonLink: "" });
         setEditMode(null);
       }
-      toast.success("Deleted!");
     };
 
     const handleAdd = () => {

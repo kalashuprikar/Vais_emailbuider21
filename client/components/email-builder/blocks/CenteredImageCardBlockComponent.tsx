@@ -168,7 +168,6 @@ export const CenteredImageCardBlockComponent: React.FC<
         onBlockUpdate({ ...block, image: "" });
         setEditMode(null);
       }
-      toast.success("Deleted!");
     };
 
     const handleAdd = () => {
