@@ -17,6 +17,9 @@ export const ImageBlockComponent: React.FC<ImageBlockComponentProps> = ({
   isSelected,
   onSrcChange,
   onDimensionChange,
+  onDuplicate,
+  onDelete,
+  blockIndex = 0,
 }) => {
   const [isResizing, setIsResizing] = useState(false);
   const [startX, setStartX] = useState(0);
