@@ -121,11 +121,11 @@ export const ImageBlockComponent: React.FC<ImageBlockComponentProps> = ({
             alt={block.alt || "Image"}
             crossOrigin="anonymous"
             style={{
-              width: `${block.width}${block.widthUnit}`,
+              width: `${block.width || 100}${block.widthUnit || "px"}`,
               height:
                 block.heightUnit === "%"
-                  ? `${block.height}${block.heightUnit}`
-                  : `${block.height}px`,
+                  ? `${block.height || 100}${block.heightUnit}`
+                  : `${block.height || "auto"}px`,
               display: "block",
               maxWidth: "100%",
               objectFit: "contain",
