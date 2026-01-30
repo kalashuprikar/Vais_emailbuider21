@@ -21,6 +21,7 @@ export const SplitImageCardBlockComponent: React.FC<
   const [editMode, setEditMode] = useState<string | null>(null);
   const [isHoveringImage, setIsHoveringImage] = useState(false);
   const [imageUrlInput, setImageUrlInput] = useState("");
+  const [hoveredSection, setHoveredSection] = useState<string | null>(null);
 
   // Initialize sections from old format or arrays
   const titles = useMemo(
@@ -223,15 +224,32 @@ export const SplitImageCardBlockComponent: React.FC<
   const SectionToolbar = ({
     onCopy,
     onDelete,
+    onAdd,
   }: {
     onCopy: () => void;
     onDelete: () => void;
+    onAdd?: () => void;
   }) => {
     return (
       <div
         className="flex items-center gap-1 bg-white border border-gray-200 rounded-lg p-2 shadow-sm mt-2 w-fit"
         onMouseDown={(e) => e.preventDefault()}
       >
+        {onAdd && (
+          <Button
+            variant="ghost"
+            size="sm"
+            className="h-7 w-7 p-0 hover:bg-gray-100"
+            title="Add"
+            onMouseDown={(e) => {
+              e.preventDefault();
+              onAdd();
+            }}
+          >
+            <Plus className="w-3 h-3 text-gray-700" />
+          </Button>
+        )}
+
         <Button
           variant="ghost"
           size="sm"
@@ -369,12 +387,16 @@ export const SplitImageCardBlockComponent: React.FC<
                             style={{ border: "2px solid rgb(255, 106, 0)" }}
                           />
                           <SectionToolbar
+                            onAdd={handleAddTitle}
                             onCopy={() => handleDuplicateTitle(title.id)}
                             onDelete={() => handleDeleteTitle(title.id)}
                           />
                         </>
                       ) : (
-                        <div>
+                        <div
+                          onMouseEnter={() => setHoveredSection(`title-${title.id}`)}
+                          onMouseLeave={() => setHoveredSection(null)}
+                        >
                           <p
                             onClick={() =>
                               setEditMode(`title-${title.id}`)
@@ -382,17 +404,20 @@ export const SplitImageCardBlockComponent: React.FC<
                             className="font-bold text-lg text-gray-900 cursor-pointer p-3 rounded transition-all"
                             style={{
                               border:
-                                editMode === `title-${title.id}`
+                                hoveredSection === `title-${title.id}`
                                   ? "1px dashed rgb(255, 106, 0)"
                                   : "none",
                             }}
                           >
                             {title.content}
                           </p>
-                          <SectionToolbar
-                            onCopy={() => handleDuplicateTitle(title.id)}
-                            onDelete={() => handleDeleteTitle(title.id)}
-                          />
+                          {editMode === `title-${title.id}` && (
+                            <SectionToolbar
+                              onAdd={handleAddTitle}
+                              onCopy={() => handleDuplicateTitle(title.id)}
+                              onDelete={() => handleDeleteTitle(title.id)}
+                            />
+                          )}
                         </div>
                       )}
                     </div>
@@ -434,6 +459,7 @@ export const SplitImageCardBlockComponent: React.FC<
                             }}
                           />
                           <SectionToolbar
+                            onAdd={handleAddDescription}
                             onCopy={() =>
                               handleDuplicateDescription(desc.id)
                             }
@@ -443,7 +469,10 @@ export const SplitImageCardBlockComponent: React.FC<
                           />
                         </>
                       ) : (
-                        <div>
+                        <div
+                          onMouseEnter={() => setHoveredSection(`description-${desc.id}`)}
+                          onMouseLeave={() => setHoveredSection(null)}
+                        >
                           <p
                             onClick={() =>
                               setEditMode(`description-${desc.id}`)
@@ -451,21 +480,24 @@ export const SplitImageCardBlockComponent: React.FC<
                             className="text-sm text-gray-600 cursor-pointer p-3 rounded whitespace-pre-line transition-all"
                             style={{
                               border:
-                                editMode === `description-${desc.id}`
+                                hoveredSection === `description-${desc.id}`
                                   ? "1px dashed rgb(255, 106, 0)"
                                   : "none",
                             }}
                           >
                             {desc.content}
                           </p>
-                          <SectionToolbar
-                            onCopy={() =>
-                              handleDuplicateDescription(desc.id)
-                            }
-                            onDelete={() =>
-                              handleDeleteDescription(desc.id)
-                            }
-                          />
+                          {editMode === `description-${desc.id}` && (
+                            <SectionToolbar
+                              onAdd={handleAddDescription}
+                              onCopy={() =>
+                                handleDuplicateDescription(desc.id)
+                              }
+                              onDelete={() =>
+                                handleDeleteDescription(desc.id)
+                              }
+                            />
+                          )}
                         </div>
                       )}
                     </div>
@@ -494,6 +526,7 @@ export const SplitImageCardBlockComponent: React.FC<
                             style={{ border: "2px solid rgb(255, 106, 0)" }}
                           />
                           <SectionToolbar
+                            onAdd={handleAddButton}
                             onCopy={() => handleDuplicateButton(btn.id)}
                             onDelete={() => handleDeleteButton(btn.id)}
                           />
@@ -515,27 +548,37 @@ export const SplitImageCardBlockComponent: React.FC<
                             style={{ border: "2px solid rgb(255, 106, 0)" }}
                           />
                           <SectionToolbar
+                            onAdd={handleAddButton}
                             onCopy={() => handleDuplicateButton(btn.id)}
                             onDelete={() => handleDeleteButton(btn.id)}
                           />
                         </>
                       ) : (
-                        <div>
+                        <div
+                          onMouseEnter={() => setHoveredSection(`button-${btn.id}`)}
+                          onMouseLeave={() => setHoveredSection(null)}
+                        >
                           <button
                             onClick={() =>
                               setEditMode(`button-text-${btn.id}`)
                             }
                             className="py-2 px-4 bg-valasys-orange text-white rounded text-sm font-bold hover:bg-orange-600 cursor-pointer transition-all"
+                            style={{
+                              border: hoveredSection === `button-${btn.id}` ? "1px dashed white" : "none",
+                            }}
                           >
                             {btn.text}
                           </button>
                           <div className="text-xs text-gray-500 mt-1 p-2">
                             Link: {btn.link || "#"}
                           </div>
-                          <SectionToolbar
-                            onCopy={() => handleDuplicateButton(btn.id)}
-                            onDelete={() => handleDeleteButton(btn.id)}
-                          />
+                          {editMode === `button-text-${btn.id}` || editMode === `button-link-${btn.id}` ? (
+                            <SectionToolbar
+                              onAdd={handleAddButton}
+                              onCopy={() => handleDuplicateButton(btn.id)}
+                              onDelete={() => handleDeleteButton(btn.id)}
+                            />
+                          ) : null}
                         </div>
                       )}
                     </div>
