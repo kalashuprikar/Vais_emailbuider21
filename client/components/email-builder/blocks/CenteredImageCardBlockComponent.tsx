@@ -148,7 +148,6 @@ export const CenteredImageCardBlockComponent: React.FC<
 
       // Duplicate the entire block
       onDuplicate(block, blockIndex + 1);
-      toast.success("Block duplicated!");
       setEditMode(null);
     };
 
