@@ -21,6 +21,9 @@ export const TextBlockComponent: React.FC<TextBlockComponentProps> = ({
   onEdit,
   onEditingChange,
   onContentChange,
+  onDuplicate,
+  onDelete,
+  blockIndex = 0,
 }) => {
   const getWidthStyle = () => {
     if (block.widthUnit === "%") {
