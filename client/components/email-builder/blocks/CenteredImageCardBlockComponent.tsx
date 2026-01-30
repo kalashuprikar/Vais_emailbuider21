@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import { CenteredImageCardBlock } from "../types";
 import { ContentBlock } from "../types";
-import { Upload, Edit2, Trash2, Plus } from "lucide-react";
+import { Upload, Edit2, Copy, Trash2, Plus } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
