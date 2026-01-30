@@ -411,13 +411,6 @@ export const SplitImageCardBlockComponent: React.FC<
                           >
                             {title.content}
                           </p>
-                          {editMode === `title-${title.id}` && (
-                            <SectionToolbar
-                              onAdd={handleAddTitle}
-                              onCopy={() => handleDuplicateTitle(title.id)}
-                              onDelete={() => handleDeleteTitle(title.id)}
-                            />
-                          )}
                         </div>
                       )}
                     </div>
@@ -487,17 +480,6 @@ export const SplitImageCardBlockComponent: React.FC<
                           >
                             {desc.content}
                           </p>
-                          {editMode === `description-${desc.id}` && (
-                            <SectionToolbar
-                              onAdd={handleAddDescription}
-                              onCopy={() =>
-                                handleDuplicateDescription(desc.id)
-                              }
-                              onDelete={() =>
-                                handleDeleteDescription(desc.id)
-                              }
-                            />
-                          )}
                         </div>
                       )}
                     </div>
@@ -572,13 +554,6 @@ export const SplitImageCardBlockComponent: React.FC<
                           <div className="text-xs text-gray-500 mt-1 p-2">
                             Link: {btn.link || "#"}
                           </div>
-                          {editMode === `button-text-${btn.id}` || editMode === `button-link-${btn.id}` ? (
-                            <SectionToolbar
-                              onAdd={handleAddButton}
-                              onCopy={() => handleDuplicateButton(btn.id)}
-                              onDelete={() => handleDeleteButton(btn.id)}
-                            />
-                          ) : null}
                         </div>
                       )}
                     </div>
