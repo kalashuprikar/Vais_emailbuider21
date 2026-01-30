@@ -202,6 +202,17 @@ export const CenteredImageCardBlockComponent: React.FC<
         id: generateId(),
       });
       onBlockUpdate({ ...block, titles: newTitles });
+
+      // Copy to clipboard with styling
+      const styledContent = `<h2 style="font-weight: bold; font-size: 20px; color: rgb(17, 24, 39); text-align: center;">${titleToDuplicate.content}</h2>`;
+      navigator.clipboard.write([
+        new ClipboardItem({
+          "text/html": new Blob([styledContent], { type: "text/html" }),
+          "text/plain": new Blob([titleToDuplicate.content], { type: "text/plain" })
+        })
+      ]).catch(() => {
+        navigator.clipboard.writeText(titleToDuplicate.content);
+      });
     }
   };
 
@@ -215,6 +226,17 @@ export const CenteredImageCardBlockComponent: React.FC<
         id: generateId(),
       });
       onBlockUpdate({ ...block, descriptions: newDescriptions });
+
+      // Copy to clipboard with styling
+      const styledContent = `<p style="font-size: 14px; color: rgb(75, 85, 99); text-align: center; white-space: pre-wrap;">${descToDuplicate.content}</p>`;
+      navigator.clipboard.write([
+        new ClipboardItem({
+          "text/html": new Blob([styledContent], { type: "text/html" }),
+          "text/plain": new Blob([descToDuplicate.content], { type: "text/plain" })
+        })
+      ]).catch(() => {
+        navigator.clipboard.writeText(descToDuplicate.content);
+      });
     }
   };
 
@@ -228,6 +250,17 @@ export const CenteredImageCardBlockComponent: React.FC<
         id: generateId(),
       });
       onBlockUpdate({ ...block, buttons: newButtons });
+
+      // Copy to clipboard with styling
+      const styledContent = `<a href="${buttonToDuplicate.link}" style="display: inline-block; padding: 8px 16px; background-color: rgb(255, 106, 35); color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 14px;">${buttonToDuplicate.text}</a>`;
+      navigator.clipboard.write([
+        new ClipboardItem({
+          "text/html": new Blob([styledContent], { type: "text/html" }),
+          "text/plain": new Blob([`${buttonToDuplicate.text} (${buttonToDuplicate.link})`], { type: "text/plain" })
+        })
+      ]).catch(() => {
+        navigator.clipboard.writeText(`${buttonToDuplicate.text} (${buttonToDuplicate.link})`);
+      });
     }
   };
 
