@@ -5854,6 +5854,54 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 </div>
 
                 <div>
+                  <Label className="text-xs font-semibold text-gray-700 mb-2 block">
+                    Card Image
+                  </Label>
+                  {selectedCard.image ? (
+                    <div className="space-y-2">
+                      <div className="w-full rounded border border-gray-300 overflow-hidden">
+                        <img
+                          src={selectedCard.image}
+                          alt={selectedCard.imageAlt || "Card image"}
+                          className="w-full h-32 object-cover"
+                        />
+                      </div>
+                      <button
+                        onClick={() => {
+                          handleCardUpdate("image", "");
+                          handleCardUpdate("imageAlt", "");
+                          handleCardUpdate("imageWidth", undefined);
+                          handleCardUpdate("imageHeight", undefined);
+                        }}
+                        className="w-full px-3 py-2 text-xs bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors"
+                      >
+                        Remove Image
+                      </button>
+                    </div>
+                  ) : (
+                    <label className="block w-full px-3 py-2 border-2 border-dashed border-gray-300 rounded text-center cursor-pointer hover:bg-gray-50">
+                      <p className="text-xs text-gray-600">Click to upload</p>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            const reader = new FileReader();
+                            reader.onload = (event) => {
+                              handleCardUpdate("image", event.target?.result as string);
+                              handleCardUpdate("imageAlt", file.name);
+                            };
+                            reader.readAsDataURL(file);
+                          }
+                        }}
+                        className="hidden"
+                      />
+                    </label>
+                  )}
+                </div>
+
+                <div>
                   <h4 className="text-xs font-bold text-gray-900 mb-3">
                     Styling
                   </h4>
