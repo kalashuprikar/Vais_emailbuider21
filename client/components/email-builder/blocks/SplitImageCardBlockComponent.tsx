@@ -75,23 +75,15 @@ export const SplitImageCardBlockComponent: React.FC<
     sectionType: "title" | "description" | "buttonText" | "buttonLink";
   }) => {
     const handleCopy = () => {
-      // Get the content of the specific section
-      let contentToCopy = "";
+      // Duplicate the section content
       if (sectionType === "title") {
-        contentToCopy = block.title;
+        onBlockUpdate({ ...block, title: block.title + "\n" + block.title });
       } else if (sectionType === "description") {
-        contentToCopy = block.description;
+        onBlockUpdate({ ...block, description: block.description + "\n" + block.description });
       } else if (sectionType === "buttonText") {
-        contentToCopy = block.buttonText;
+        onBlockUpdate({ ...block, buttonText: block.buttonText + "\n" + block.buttonText });
       } else if (sectionType === "buttonLink") {
-        contentToCopy = block.buttonLink;
-      }
-
-      // Copy to clipboard
-      if (contentToCopy) {
-        navigator.clipboard.writeText(contentToCopy).catch(() => {
-          // Fallback if clipboard API fails
-        });
+        onBlockUpdate({ ...block, buttonLink: block.buttonLink + "\n" + block.buttonLink });
       }
       setEditMode(null);
     };
