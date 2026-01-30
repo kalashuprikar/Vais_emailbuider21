@@ -910,6 +910,7 @@ export function renderBlockToHTML(block: ContentBlock): string {
         ?.map(
           (card: any) => {
             let imageHtml = "";
+            const contentPadding = Math.max(12, card.padding || 16);
             if (card.image) {
               const imageTag = `<img src="${card.image}" alt="${card.imageAlt || ""}" style="width: 100%; height: auto; display: block; border-radius: ${card.borderRadius}px; object-fit: cover; border: none; cursor: pointer;" />`;
               if (card.imageLink) {
@@ -931,7 +932,7 @@ export function renderBlockToHTML(block: ContentBlock): string {
             return `<div style="width: 48%; display: inline-block; vertical-align: top; padding-right: 10px; box-sizing: border-box;">
               <div style="background-color: ${card.backgroundColor}; color: ${card.textColor}; border-radius: ${card.borderRadius}px; margin: ${card.margin}px; overflow: hidden; border: none;">
                 ${imageHtml}
-                <div style="padding: ${Math.max(12, card.padding)}px; margin: 0; border: none;">
+                <div style="padding: ${contentPadding}px; margin: 0; border: none;">
                   <h3 style="margin: 0 0 8px 0; font-size: 16px; font-weight: bold;">${card.title}</h3>
                   <p style="margin: 0; font-size: 13px; line-height: 1.4;">${card.description}</p>
                 </div>
