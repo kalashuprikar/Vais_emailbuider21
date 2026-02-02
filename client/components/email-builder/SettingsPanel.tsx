@@ -72,6 +72,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     } else if (block?.type === "video") {
       setVideoWidthInput(String(block.width ?? 300));
       setVideoHeightInput(String(block.height ?? 200));
+    } else if (block?.type === "twoColumnCard") {
+      setTwoCardWidthInput(String((block as any).width ?? 100));
+      setTwoCardHeightInput(String((block as any).height ?? 300));
     }
   }, [block?.id, block?.type, block?.width, block?.height]);
 
