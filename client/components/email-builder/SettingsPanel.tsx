@@ -59,6 +59,11 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
       block?.type === "twoColumnCard" ? ((block as any).width ?? 100) : 100,
     ),
   );
+  const [twoCardHeightInput, setTwoCardHeightInput] = useState<string>(
+    String(
+      block?.type === "twoColumnCard" ? ((block as any).height ?? 300) : 300,
+    ),
+  );
 
   // Update input states when block changes
   React.useEffect(() => {
@@ -69,8 +74,9 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
       setVideoHeightInput(String(block.height ?? 200));
     } else if (block?.type === "twoColumnCard") {
       setTwoCardWidthInput(String((block as any).width ?? 100));
+      setTwoCardHeightInput(String((block as any).height ?? 300));
     }
-  }, [block?.id, block?.type, block?.width]);
+  }, [block?.id, block?.type, block?.width, block?.height]);
 
   // Initialize selectedCardId when block changes to twoColumnCard
   React.useEffect(() => {
