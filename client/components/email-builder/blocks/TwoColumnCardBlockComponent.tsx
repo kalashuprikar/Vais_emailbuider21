@@ -218,10 +218,9 @@ export const TwoColumnCardBlockComponent: React.FC<
           >
             {/* Image Section */}
             <div
-              className="relative flex-shrink-0"
+              className="relative h-40 flex-shrink-0"
               style={{
                 borderRadius: `${card.borderRadius}px ${card.borderRadius}px 0 0`,
-                height: card.imageHeight ? `${card.imageHeight}px` : "auto",
               }}
             >
               {card.image ? (
