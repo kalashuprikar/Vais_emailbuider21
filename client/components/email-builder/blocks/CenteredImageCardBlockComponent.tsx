@@ -658,13 +658,18 @@ export const CenteredImageCardBlockComponent: React.FC<
                     >
                       <div className="flex items-start justify-between gap-2 group">
                         <p
-                          onClick={() => setEditMode(`description-${desc.id}`)}
+                          onClick={() => {
+                            setEditMode(`description-${desc.id}`);
+                            setFocusedSection(`description-${desc.id}`);
+                          }}
                           className="flex-1 text-sm text-gray-600 cursor-pointer transition-all p-3 rounded whitespace-pre-wrap break-words"
                           style={{
                             border:
-                              hoveredSection === `description-${desc.id}`
+                              focusedSection === `description-${desc.id}`
                                 ? "2px solid rgb(255, 106, 0)"
-                                : "2px dotted rgb(255, 106, 0)",
+                                : hoveredSection === `description-${desc.id}`
+                                  ? "2px dotted rgb(255, 106, 0)"
+                                  : "2px dotted rgb(255, 106, 0)",
                           }}
                         >
                           {desc.content}
