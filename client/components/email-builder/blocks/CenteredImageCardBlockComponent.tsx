@@ -598,7 +598,7 @@ export const CenteredImageCardBlockComponent: React.FC<
           )}
         </div>
 
-        <div className="space-y-4 text-center">
+        <div className="space-y-4 text-center pt-4">
           {/* Titles Section */}
           {titles.length > 0 && (
             <div className="space-y-2">
