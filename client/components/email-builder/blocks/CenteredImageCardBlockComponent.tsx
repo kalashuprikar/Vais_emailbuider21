@@ -306,6 +306,7 @@ export const CenteredImageCardBlockComponent: React.FC<
     const newDescriptions = descriptions.filter((d) => d.id !== id);
     onBlockUpdate({ ...block, descriptions: newDescriptions });
     setEditMode(null);
+    setFocusedSection(null);
   };
 
   const handleDeleteButton = (id: string) => {
