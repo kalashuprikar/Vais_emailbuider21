@@ -106,20 +106,6 @@ export const TwoColumnCardBlockComponent: React.FC<
     const cardToDuplicate = block.cards.find((c) => c.id === cardId);
     if (cardToDuplicate) {
       const newCard = {
-        ...cardToDuplicate,
-        id: `card-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      };
-      const cardIndex = block.cards.findIndex((c) => c.id === cardId);
-      const newCards = [...block.cards];
-      newCards.splice(cardIndex + 1, 0, newCard);
-      onUpdate({ ...block, cards: newCards });
-    }
-  };
-
-  const handleDuplicateCard = (cardId: string) => {
-    const cardToDuplicate = block.cards.find((c) => c.id === cardId);
-    if (cardToDuplicate) {
-      const newCard = {
         ...JSON.parse(JSON.stringify(cardToDuplicate)),
         id: `card-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       };
