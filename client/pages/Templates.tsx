@@ -20,7 +20,7 @@ import {
   deleteTemplateFromLocalStorage,
   renderTemplateToHTML,
 } from "@/components/email-builder/utils";
-import { Mail, Plus, Trash2, Edit2, Download } from "lucide-react";
+import { Mail, Plus, Trash2, Edit2, Download, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type View = "list" | "editor";
@@ -44,6 +44,13 @@ export default function Templates() {
   const handleNewTemplate = () => {
     setSelectedTemplateId(null);
     setView("editor");
+  };
+
+  const handleCreateWithAI = () => {
+    setSelectedTemplateId(null);
+    setView("editor");
+    // We could pass a state to tell the editor to open the AI tab immediately
+    // For now, it will just open the editor and the user can pick the AI tab
   };
 
   const handleEditTemplate = (id: string) => {
@@ -121,6 +128,13 @@ export default function Templates() {
           >
             <Plus className="w-4 h-4 mr-2" />
             Create Template
+          </Button>
+          <Button
+            onClick={handleCreateWithAI}
+            className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-md transition-all duration-300 transform hover:scale-105"
+          >
+            <Sparkles className="w-4 h-4 mr-2" />
+            Create with AI
           </Button>
         </div>
 

@@ -32,10 +32,11 @@ import {
   generateId,
   renderTemplateToHTML,
 } from "./utils";
-import { Save, Eye, Edit, Trash2, Plus, ChevronLeft, Code } from "lucide-react";
+import { Save, Eye, Edit, Trash2, Plus, ChevronLeft, Code, Sparkles, Layout } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { EmailCanvas } from "./EmailCanvas";
 import { SourceCodeView } from "./SourceCodeView";
+import { AIAssistant } from "./AIAssistant";
 
 interface EmailBuilderProps {
   templateId?: string;
@@ -68,6 +69,7 @@ export const EmailBuilder: React.FC<EmailBuilderProps> = ({
   const [templateSubject, setTemplateSubject] = useState(template.subject);
   const [undoStack, setUndoStack] = useState<EmailTemplate[]>([]);
   const [redoStack, setRedoStack] = useState<EmailTemplate[]>([]);
+  const [leftSidebarTab, setLeftSidebarTab] = useState<"blocks" | "ai">("blocks");
 
   // Auto-save to localStorage
   useEffect(() => {
@@ -204,6 +206,14 @@ export const EmailBuilder: React.FC<EmailBuilderProps> = ({
     }
   }, [undoStack, redoStack, template]);
 
+  const handleSetTemplateBlocks = useCallback((blocks: ContentBlock[]) => {
+    setTemplate((prev) => ({
+      ...prev,
+      blocks,
+      updatedAt: new Date().toISOString(),
+    }));
+  }, []);
+
   return (
     <DashboardLayout>
       <DndProvider backend={HTML5Backend}>
@@ -321,11 +331,46 @@ export const EmailBuilder: React.FC<EmailBuilderProps> = ({
               </div>
             ) : (
               <>
-                {/* Left Sidebar - Blocks Panel with Selected Blocks */}
-                <div className="flex flex-col w-72 bg-white border-r border-gray-200 overflow-y-auto">
-                  {/* Blocks/Sections/Saved Tabs */}
-                  <div className="flex flex-col">
-                    <BlocksPanel onAddBlock={handleAddBlock} />
+                {/* Left Sidebar - Blocks Panel or AI Assistant */}
+                <div className="flex flex-col w-80 bg-white border-r border-gray-200 overflow-hidden">
+                  {/* Tab Switcher */}
+                  <div className="flex border-b border-gray-200">
+                    <button
+                      onClick={() => setLeftSidebarTab("blocks")}
+                      className={cn(
+                        "flex-1 py-3 text-sm font-medium flex items-center justify-center gap-2 transition-colors",
+                        leftSidebarTab === "blocks"
+                          ? "text-valasys-orange border-b-2 border-valasys-orange bg-valasys-orange/5"
+                          : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
+                      )}
+                    >
+                      <Layout className="w-4 h-4" />
+                      Blocks
+                    </button>
+                    <button
+                      onClick={() => setLeftSidebarTab("ai")}
+                      className={cn(
+                        "flex-1 py-3 text-sm font-medium flex items-center justify-center gap-2 transition-colors",
+                        leftSidebarTab === "ai"
+                          ? "text-purple-600 border-b-2 border-purple-600 bg-purple-50"
+                          : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
+                      )}
+                    >
+                      <Sparkles className="w-4 h-4" />
+                      AI Assistant
+                    </button>
+                  </div>
+
+                  <div className="flex-1 overflow-y-auto">
+                    {leftSidebarTab === "blocks" ? (
+                      <BlocksPanel onAddBlock={handleAddBlock} />
+                    ) : (
+                      <AIAssistant
+                        onAddBlock={handleAddBlock}
+                        onSetTemplate={handleSetTemplateBlocks}
+                        currentTemplate={template}
+                      />
+                    )}
                   </div>
                 </div>
 
